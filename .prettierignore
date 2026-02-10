@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+.next
+.git
+.vscode
+.DS_Store
+*.lock

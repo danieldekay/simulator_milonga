@@ -1,73 +1,210 @@
-# React + TypeScript + Vite
+# Simulator Milonga
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application built with the latest 2026 best practices and tooling.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Framework**: React 19 with TypeScript
+- **Build Tool**: Vite (lightning-fast builds)
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui-style components with patterns
+- **Code Quality**: ESLint, Prettier
+- **Package Manager**: npm
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Prerequisites
 
-## Expanding the ESLint configuration
+- Node.js 18+ 
+- npm 9+
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start the development server with hot module replacement:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The app will be available at `http://localhost:5173`
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Code Quality
+
+#### Format Code
+
+```bash
+npm run format
+```
+
+#### Check Formatting
+
+```bash
+npm run format:check
+```
+
+#### Lint Code
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── components/          # React components
+│   └── ui/            # shadcn-style UI components (Button, Card, etc.)
+├── lib/               # Utility functions
+│   └── utils.ts       # Helper functions (cn, etc.)
+├── assets/            # Static assets
+├── App.tsx            # Main App component
+├── main.tsx           # Application entry point
+└── index.css          # Global styles with Tailwind directives
+```
+
+## Key Features
+
+### Component Library
+
+This project includes shadcn/ui-style components with full TypeScript support:
+
+- **Button**: Versatile button component with multiple variants and sizes
+- **Card**: Container component with header, content, and footer sections
+- **Utilities**: `cn()` function for merging Tailwind CSS classes
+
+Components are located in `src/components/ui/` and can be easily extended with additional shadcn components.
+
+### TypeScript
+
+- Strict mode enabled
+- Full type checking with `@types` packages
+- Path aliases configured (`@/` → `src/`)
+
+### Tailwind CSS
+
+- Configured with CSS variables for theming
+- Light and dark mode support
+- Custom color variables for shadcn components
+
+### Code Quality Tools
+
+- **ESLint**: Catches errors and enforces best practices
+- **Prettier**: Automatic code formatting with Tailwind class ordering
+
+## VS Code Setup
+
+Recommended extensions are listed in `.vscode/extensions.json`:
+
+- **Prettier** - Code formatter
+- **ESLint** - Lint integration
+- **Tailwind CSS IntelliSense** - Class suggestions
+- **React Component Generator**
+
+The workspace is configured to auto-format on save.
+
+## Dark Mode
+
+The project includes CSS variables for light and dark mode theming. Add `dark` class to the root HTML element to enable dark mode:
+
+```html
+<html class="dark">
+```
+
+## Adding Components
+
+To add new shadcn-style components:
+
+1. Create a new file in `src/components/ui/`
+2. Follow the pattern of existing components (use CVA for variants)
+3. Export from the component file
+4. Import and use in your application
+
+Example:
+```tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export function MyComponent() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Title</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button>Click me</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## Performance
+
+- Vite provides instant server start and lightning-fast HMR
+- React 19 with optimized rendering
+- Tree-shaking and code splitting for smaller bundle sizes
+- CSS variables instead of large CSS-in-JS libraries
+
+## Deployment
+
+### GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+**Live Site**: https://danieldekay.github.io/simulator_milonga/
+
+**Features**:
+- Automatic builds on every push to `main` branch
+- Configured with base path `/simulator_milonga/`
+- Uses GitHub Actions workflow in `.github/workflows/deploy.yml`
+
+**Manual Deployment**:
+If needed, you can deploy manually:
+```bash
+npm run deploy
+```
+
+**Setup Requirements**:
+1. Ensure GitHub Pages is enabled in repository settings
+2. Set deployment source to "GitHub Actions" in repository settings
+3. SSH key configured for `git@github.com` (already set up)
+
+**Push to Main**:
+```bash
+git push origin main
+```
+
+The GitHub Actions workflow will automatically:
+1. Install dependencies
+2. Build the project with Vite
+3. Deploy the `dist/` folder to GitHub Pages
+
+## Learn More
+
+- [React Documentation](https://react.dev)
+- [Vite Guide](https://vite.dev/guide/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+
+## License
+
+MIT
