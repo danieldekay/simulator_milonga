@@ -15,7 +15,7 @@ A modern web application built with the latest 2026 best practices and tooling.
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm 9+
 
 ### Installation
@@ -125,7 +125,7 @@ The workspace is configured to auto-format on save.
 The project includes CSS variables for light and dark mode theming. Add `dark` class to the root HTML element to enable dark mode:
 
 ```html
-<html class="dark">
+<html class="dark"></html>
 ```
 
 ## Adding Components
@@ -138,6 +138,7 @@ To add new shadcn-style components:
 4. Import and use in your application
 
 Example:
+
 ```tsx
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -172,27 +173,32 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 **Live Site**: https://danieldekay.github.io/simulator_milonga/
 
 **Features**:
+
 - Automatic builds on every push to `main` branch
 - Configured with base path `/simulator_milonga/`
 - Uses GitHub Actions workflow in `.github/workflows/deploy.yml`
 
 **Manual Deployment**:
 If needed, you can deploy manually:
+
 ```bash
 npm run deploy
 ```
 
 **Setup Requirements**:
+
 1. Ensure GitHub Pages is enabled in repository settings
 2. Set deployment source to "GitHub Actions" in repository settings
 3. SSH key configured for `git@github.com` (already set up)
 
 **Push to Main**:
+
 ```bash
 git push origin main
 ```
 
 The GitHub Actions workflow will automatically:
+
 1. Install dependencies
 2. Build the project with Vite
 3. Deploy the `dist/` folder to GitHub Pages
